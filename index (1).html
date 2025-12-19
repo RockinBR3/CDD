@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot de Gerenciamento - Casa das Debutantes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Casa das Debutantes</h1>
+                <p>Bot de Gerenciamento</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#prerequisitos">Pré-requisitos</a></li>
+                <li><a href="#instalacao">Instalação</a></li>
+                <li><a href="#funcionalidades">Funcionalidades</a></li>
+                <li><a href="#whatsapp">WhatsApp</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Bot de Gerenciamento Local</h2>
+            <p>Solução completa para gerenciar clientes, roupas, fluxo de caixa e comunicação via WhatsApp Business API</p>
+            <a href="#prerequisitos" class="btn btn-primary">Começar Agora</a>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <main class="container main-content">
+        
+        <!-- Seção: Introdução -->
+        <section class="section">
+            <h2>Sobre o Bot</h2>
+            <p>Este é um Bot de gerenciamento local, desenvolvido em <strong>Python</strong> com interface gráfica <strong>Tkinter</strong> e banco de dados <strong>SQLite</strong>, para auxiliar a empresa "Casa das Debutantes" no controle de clientes, estoque de roupas, fluxo de caixa e comunicação via <strong>WhatsApp Business API</strong>.</p>
+            <p>O Bot roda completamente no seu desktop/notebook, oferecendo uma solução segura e independente de internet para operações locais.</p>
+        </section>
+
+        <!-- Seção: Pré-requisitos -->
+        <section class="section" id="prerequisitos">
+            <h2>1. Pré-requisitos</h2>
+            <p>Para rodar o Bot, você precisará ter instalado:</p>
+            <ul class="requirements-list">
+                <li><strong>Python 3.x</strong> - O projeto foi desenvolvido com foco na compatibilidade com Python 3.14, mas deve funcionar em versões 3.8+.</li>
+                <li><strong>Tkinter</strong> - Geralmente já vem instalado com o Python padrão.</li>
+                <li><strong>Biblioteca `requests`</strong> - Para comunicação com a API do WhatsApp.</li>
+            </ul>
+        </section>
+
+        <!-- Seção: Configuração e Instalação -->
+        <section class="section" id="instalacao">
+            <h2>2. Configuração e Instalação</h2>
+            
+            <h3>Passo 1: Navegue até a pasta do projeto</h3>
+            <div class="code-block">
+                <code>cd casa_das_debutantes_bot</code>
+            </div>
+
+            <h3>Passo 2: Instale as dependências necessárias</h3>
+            <div class="code-block">
+                <code>pip install requests</code>
+            </div>
+
+            <h3>Passo 3: Estrutura de Arquivos</h3>
+            <p>O projeto é composto por três arquivos principais:</p>
+            <ul>
+                <li><strong>main_app.py</strong> - O arquivo principal que contém a interface gráfica (Tkinter) e a lógica de interação.</li>
+                <li><strong>database.py</strong> - O módulo responsável por gerenciar a conexão com o banco de dados SQLite (<code>bot_data.db</code>) e a criação das tabelas.</li>
+                <li><strong>whatsapp_api.py</strong> - O módulo que encapsula a lógica de comunicação com a API do WhatsApp Business.</li>
+            </ul>
+
+            <h3>Como Executar</h3>
+            <p>Execute o arquivo principal a partir do terminal:</p>
+            <div class="code-block">
+                <code>python main_app.py</code>
+            </div>
+            <p><em>O banco de dados (<code>bot_data.db</code>) será criado automaticamente na primeira execução.</em></p>
+        </section>
+
+        <!-- Seção: Funcionalidades -->
+        <section class="section" id="funcionalidades">
+            <h2>3. Funcionalidades do Bot</h2>
+            <p>O Bot é dividido em quatro abas principais:</p>
+
+            <!-- Subsection: Clientes -->
+            <div class="feature-card">
+                <h3>3.1. Clientes</h3>
+                <p>Permite o cadastro e a pesquisa de clientes.</p>
+                
+                <h4>Campos de Cadastro:</h4>
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Descrição</th>
+                            <th>Obrigatório</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nome</td>
+                            <td>Nome completo do cliente.</td>
+                            <td>Sim</td>
+                        </tr>
+                        <tr>
+                            <td>Data de Nascimento</td>
+                            <td>Data de nascimento.</td>
+                            <td>Não</td>
+                        </tr>
+                        <tr>
+                            <td>CPF</td>
+                            <td>Cadastro de Pessoa Física (deve ser único).</td>
+                            <td>Sim</td>
+                        </tr>
+                        <tr>
+                            <td>Sexo</td>
+                            <td>Sexo do cliente.</td>
+                            <td>Não</td>
+                        </tr>
+                        <tr>
+                            <td>Última Roupa Alugada</td>
+                            <td>Informação sobre o último item alugado.</td>
+                            <td>Não</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p><strong>Pesquisa:</strong> A pesquisa pode ser feita por <strong>Nome</strong> (busca parcial) ou <strong>CPF</strong> (busca exata).</p>
+            </div>
+
+            <!-- Subsection: Roupas -->
+            <div class="feature-card">
+                <h3>3.2. Roupas</h3>
+                <p>Permite o cadastro, visualização e edição do estoque de roupas.</p>
+                
+                <h4>Campos de Cadastro:</h4>
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nome</td>
+                            <td>Nome da roupa (ex: Vestido de Festa Azul).</td>
+                        </tr>
+                        <tr>
+                            <td>Modelo</td>
+                            <td>Modelo específico da roupa.</td>
+                        </tr>
+                        <tr>
+                            <td>Tamanho</td>
+                            <td>Tamanho (ex: P, M, G).</td>
+                        </tr>
+                        <tr>
+                            <td>Numeração</td>
+                            <td>Numeração específica (se aplicável).</td>
+                        </tr>
+                        <tr>
+                            <td>Último a Alugar</td>
+                            <td>Nome do último cliente que alugou a peça.</td>
+                        </tr>
+                        <tr>
+                            <td>Disponibilidade</td>
+                            <td><strong>Disponível</strong> ou <strong>Alugado</strong> (campo obrigatório).</td>
+                        </tr>
+                        <tr>
+                            <td>Histórico de Aluguel</td>
+                            <td>O sistema registra automaticamente o histórico de aluguel.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p><strong>Edição:</strong> Dê um <strong>clique duplo</strong> em qualquer item da lista para carregar os dados nos campos de edição.</p>
+            </div>
+
+            <!-- Subsection: Fluxo de Caixa -->
+            <div class="feature-card">
+                <h3>3.3. Fluxo de Caixa</h3>
+                <p>Gerencia as finanças da empresa com controle de entradas, saídas, contas a pagar e a receber.</p>
+                
+                <ul class="feature-list">
+                    <li><strong>Registro de Transação:</strong> Permite registrar o <strong>Tipo</strong> (Entrada, Saída, A Pagar, A Receber), <strong>Valor</strong>, <strong>Data</strong> e <strong>Descrição</strong>.</li>
+                    <li><strong>Status:</strong> Transações do tipo <em>Entrada</em> e <em>Saída</em> são marcadas como <strong>Concluídas</strong> (pago/recebido) automaticamente. Transações <em>A Pagar</em> e <em>A Receber</em> são marcadas como <strong>Pendentes</strong>.</li>
+                    <li><strong>Marcar como Pago/Recebido:</strong> Selecione uma transação pendente na lista e clique no botão para mudar seu status para <strong>Concluído</strong>.</li>
+                    <li><strong>Resumo Financeiro:</strong> Calcula e exibe o <strong>Total de Entradas</strong>, <strong>Total de Saídas</strong>, <strong>Contas a Receber</strong>, <strong>Contas a Pagar</strong> e o <strong>Lucro Líquido</strong> (Entradas - Saídas).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção: WhatsApp -->
+        <section class="section" id="whatsapp">
+            <h2>4. Integração com WhatsApp Business API</h2>
+            <p>Esta aba é crucial para a comunicação e requer configuração externa.</p>
+
+            <div class="feature-card">
+                <h3>4.1. Configuração da API</h3>
+                <p>Para que o Bot possa enviar mensagens, você deve obter as seguintes informações da plataforma <strong>Meta for Developers</strong> (Facebook/Meta):</p>
+                
+                <ol>
+                    <li><strong>Token da API do WhatsApp:</strong> Um token de acesso gerado pela Meta.</li>
+                    <li><strong>ID do Telefone (Phone ID):</strong> O ID do número de telefone que você registrou no WhatsApp Business API.</li>
+                </ol>
+                
+                <div class="alert alert-warning">
+                    <strong>⚠️ Atenção:</strong> O Bot funciona localmente e simula o envio de mensagens através da API da Meta. Para <strong>receber</strong> mensagens e ter o recurso de resposta programada totalmente funcional, você precisaria de um servidor público para configurar um <strong>Webhook</strong>, o que está fora do escopo desta aplicação local.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>4.2. Funcionalidades de Comunicação</h3>
+                <ul class="feature-list">
+                    <li><strong>Enviar Mensagem/Arquivo:</strong> Permite enviar mensagens de texto ou arquivos (via URL pública) para qualquer número de WhatsApp, utilizando as credenciais salvas.</li>
+                    <li><strong>Testar Resposta Programada:</strong> Simula o recebimento de uma mensagem e exibe a resposta automática que o Bot geraria com base na lógica pré-definida (ex: se a mensagem contiver "olá", ele responde com uma saudação e opções).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção: Código-Fonte -->
+        <section class="section">
+            <h2>5. Código-Fonte</h2>
+            <p>O código-fonte está dividido nos arquivos <code>main_app.py</code>, <code>database.py</code> e <code>whatsapp_api.py</code>.</p>
+            <p>Todos os arquivos estão disponíveis no repositório do projeto e podem ser modificados conforme necessário para atender às suas necessidades específicas.</p>
+        </section>
+
+        <!-- Seção: Suporte -->
+        <section class="section">
+            <h2>Suporte e Dúvidas</h2>
+            <p>Se tiver qualquer dúvida ou precisar de ajustes, entre em contato conosco ou consulte a documentação completa no arquivo <code>README.md</code>.</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Casa das Debutantes. Desenvolvido por <strong>Manus AI</strong>.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
